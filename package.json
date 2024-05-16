@@ -2,9 +2,18 @@
   "name": "gameserver",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "format": "prettier --write *.js **/*.js"
+  },
   "repository": "https://github.com/phg0520/gameserver.git",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.5"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
+  
 }

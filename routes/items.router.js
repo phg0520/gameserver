@@ -6,7 +6,7 @@ const router = express.Router();
 // 아이템 생성
 router.post('/', async (req, res) => {
   try {
-    const { item_code, item_name, item_ability } = req.body;
+    const { item_code, item_name, item_stat } = req.body;
 
     // 이미 존재하는 아이템 코드인지 확인
     const existingItem = await Item.findOne({ item_code });
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     }
 
     // 새로운 아이템 생성
-    const newItem = new Item({ item_code, item_name, item_ability });
+    const newItem = new Item({ item_code, item_name, item_stat });
     await newItem.save();
 
     res.status(201).json({ item_id: newItem._id });
@@ -29,9 +29,9 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const itemId = req.params.id;
-    const { item_name, item_ability } = req.body;
+    const { item_name, item_stat } = req.body;
 
-    const updatedItem = await Item.findByIdAndUpdate(itemId, { item_name, item_ability }, { new: true });
+    const updatedItem = await Item.findByIdAndUpdate(itemId, { item_name, item_stat }, { new: true });
     if (!updatedItem) {
       return res.status(404).json({ error: '아이템을 찾을 수 없습니다.' });
     }
@@ -58,7 +58,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const itemId = req.params.id;
-    const item = await Item.findById(itemId, 'item_code item_name item_ability');
+    const item = await Item.findById(itemId, 'item_code item_name item_stat');
     if (!item) {
       return res.status(404).json({ error: '아이템을 찾을 수 없습니다.' });
     }

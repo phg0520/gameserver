@@ -6,6 +6,11 @@ const connect = () => {
       "mongodb+srv://phg0520:test1234@phg0520.rpzqk9q.mongodb.net/?retryWrites=true&w=majority&appName=phg0520",
       {
         dbName: "node_lv1", 
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASSWORD,
+  
       },
     )
     .catch((err) => console.log(err))

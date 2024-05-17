@@ -2,15 +2,18 @@
 
 import express from "express";
 import connect from "./schemas/index.js";
-import charactersRouter from "./schemas/characters.schema.js";
+import characterRouter from './routes/characters.router.js';
+import itemRouter from './routes/items.router.js';
 
 const app = express();
 const PORT = 3000;
 
 connect();
 
-app.use('/api/characters', charactersRouter);
 app.use(express.json()); 
+app.use('/api/characters', charactersRouter);
+app.use('/api/items', itemRouter);
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

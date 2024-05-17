@@ -2,7 +2,7 @@
 
 import express from "express";
 import connect from "./schemas/index.js";
-import charactersRouter from "./routes/characters.router.js";
+import charactersRouter from "./schemas/characters.schema.js";
 
 const app = express();
 const PORT = 3000;
